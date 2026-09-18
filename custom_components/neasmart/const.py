@@ -95,6 +95,7 @@ class DeviceField:
         writable: Whether the value can be written back to the base.
         options: Value to label mapping for ``select`` fields.
         enabled_default: Whether the entity is enabled when first added.
+        datetime_text: Whether the value is a date formatted as readable text.
     """
 
     tag: str
@@ -107,6 +108,7 @@ class DeviceField:
     writable: bool = False
     options: dict[int, str] | None = None
     enabled_default: bool = True
+    datetime_text: bool = False
 
     @property
     def key(self) -> str:
@@ -231,7 +233,7 @@ DEVICE_FIELDS: tuple[DeviceField, ...] = (
         tag="DATETIME",
         platform=PLATFORM_SENSOR,
         translation_key="datetime",
-        device_class="timestamp",
+        datetime_text=True,
     ),
     DeviceField(
         tag="COOLING",

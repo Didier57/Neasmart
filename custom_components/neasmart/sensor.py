@@ -19,8 +19,8 @@ from .coordinator import NeaSmartCoordinator
 from .entity import (
     NeaSmartDeviceEntity,
     NeaSmartZoneEntity,
+    as_datetime_text,
     as_float,
-    as_timestamp,
 )
 
 
@@ -98,8 +98,8 @@ class NeaSmartDeviceSensor(NeaSmartDeviceEntity, SensorEntity):
     def native_value(self) -> float | str | None:
         """Return the last reported value."""
         value = self.raw_value
-        if self._field.device_class == "timestamp":
-            return as_timestamp(value)
+        if self._field.datetime_text:
+            return as_datetime_text(value)
         if self._field.state_class is not None:
             return as_float(value)
         number = as_float(value)

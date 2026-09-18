@@ -4,6 +4,14 @@ Toutes les modifications notables de ce projet sont documentées dans ce
 fichier. Le format s'appuie sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/)
 et le projet respecte le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.0.2] - 2026-09-18
+
+### Modifié
+
+- Capteur **Date et heure** (`DATETIME`) : il est désormais affiché sous forme de
+  date et d'heure absolues, par exemple `2026-09-18 08:21:21`, au lieu d'un
+  temps relatif qui donnait l'impression d'un compteur de secondes.
+
 ## [1.0.1] - 2026-09-18
 
 ### Corrigé
@@ -30,5 +38,6 @@ et le projet respecte le [versionnage sémantique](https://semver.org/lang/fr/).
 - Options : intervalle de scrutation et zones exposées.
 - Traductions française et anglaise.
 
+[1.0.2]: https://github.com/Didier57/Neasmart/releases/tag/v1.0.2
 [1.0.1]: https://github.com/Didier57/Neasmart/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Didier57/Neasmart/releases/tag/v1.0.0
