@@ -3,6 +3,7 @@
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub release](https://img.shields.io/github/v/release/Didier57/Neasmart)](https://github.com/Didier57/Neasmart/releases)
 [![License](https://img.shields.io/github/license/Didier57/Neasmart)](LICENSE)
+[![Validate](https://github.com/Didier57/Neasmart/actions/workflows/validate.yml/badge.svg)](https://github.com/Didier57/Neasmart/actions/workflows/validate.yml)
 [![Hassfest](https://github.com/Didier57/Neasmart/actions/workflows/hassfest.yml/badge.svg)](https://github.com/Didier57/Neasmart/actions/workflows/hassfest.yml)
 
 Intégration Home Assistant pour la régulation de chauffage **Nea Smart Alpha 2**.
@@ -46,6 +47,8 @@ Aucun compte, aucun cloud : tout se passe sur le réseau local.
 ## Installation
 
 ### Via HACS
+
+[![Ouvrir votre instance Home Assistant et ajouter un dépôt au Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Didier57&repository=Neasmart&category=integration)
 
 1. Dans Home Assistant, ouvrez **HACS** puis **Intégrations**.
 2. Ouvrez le menu (trois points en haut à droite) puis
