@@ -1,0 +1,162 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Nea Smart base",
+        "description": "Enter the IP address or host name of the Alpha 2 base. Its XML interface must be reachable on the local network.",
+        "data": {
+          "host": "IP address or host name",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the base",
+      "invalid_response": "The base answered with an invalid XML document",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This base is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Nea Smart options",
+        "menu_options": {
+          "settings": "Polling interval",
+          "zones": "Heat areas"
+        }
+      },
+      "settings": {
+        "title": "Polling interval",
+        "data": {
+          "scan_interval": "Interval (seconds)"
+        }
+      },
+      "zones": {
+        "title": "Heat areas",
+        "data": {
+          "enabled_zones": "Exposed heat areas"
+        }
+      }
+    }
+  },
+  "services": {
+    "write_zone_value": {
+      "name": "Write heat area value",
+      "description": "Write a single XML element inside a HEATAREA section of the base.",
+      "fields": {
+        "entry_id": {
+          "name": "Configuration entry",
+          "description": "The Nea Smart entry to target. Required only if several bases are configured."
+        },
+        "zone": {
+          "name": "Heat area number",
+          "description": "The nr attribute of the target HEATAREA (1 to 12)."
+        },
+        "tag": {
+          "name": "Element",
+          "description": "The XML element to write, for example T_TARGET."
+        },
+        "value": {
+          "name": "Value",
+          "description": "The value to send, for example 20.5."
+        }
+      }
+    },
+    "write_device_value": {
+      "name": "Write base value",
+      "description": "Write a single element at device level, optionally nested.",
+      "fields": {
+        "entry_id": {
+          "name": "Configuration entry",
+          "description": "The Nea Smart entry to target. Required only if several bases are configured."
+        },
+        "path": {
+          "name": "Element path",
+          "description": "The element path, for example COOLING or RELAIS/FUNCTION."
+        },
+        "value": {
+          "name": "Value",
+          "description": "The value to send, for example 1."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "t_actual": {
+        "name": "Actual temperature"
+      },
+      "t_actual_ext": {
+        "name": "External sensor temperature"
+      },
+      "t_target_base": {
+        "name": "Base setpoint"
+      },
+      "program_source": {
+        "name": "Program source"
+      },
+      "program_week": {
+        "name": "Week program"
+      },
+      "program_weekend": {
+        "name": "Weekend program"
+      },
+      "party_remaining_time": {
+        "name": "Party time remaining"
+      },
+      "datetime": {
+        "name": "Date and time"
+      },
+      "errorcount": {
+        "name": "Error count"
+      }
+    },
+    "number": {
+      "t_target": {
+        "name": "Target temperature"
+      },
+      "t_heat_vacation": {
+        "name": "Vacation heating temperature"
+      }
+    },
+    "select": {
+      "heatarea_mode": {
+        "name": "Operating mode"
+      },
+      "relais_function": {
+        "name": "Relay function"
+      }
+    },
+    "binary_sensor": {
+      "heatarea_state": {
+        "name": "Heat area state"
+      },
+      "party": {
+        "name": "Party mode"
+      },
+      "presence": {
+        "name": "Presence"
+      },
+      "islocked": {
+        "name": "Child lock"
+      },
+      "lock_available": {
+        "name": "Lock code required"
+      },
+      "sensor_ext": {
+        "name": "External sensor"
+      },
+      "vacation_state": {
+        "name": "Vacation mode"
+      }
+    },
+    "switch": {
+      "cooling": {
+        "name": "Cooling"
+      }
+    }
+  }
+}

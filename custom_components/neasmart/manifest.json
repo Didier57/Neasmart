@@ -1,0 +1,13 @@
+{
+  "domain": "neasmart",
+  "name": "Nea Smart",
+  "codeowners": ["@Didier57"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/Didier57/Neasmart",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/Didier57/Neasmart/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}

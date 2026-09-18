@@ -1,0 +1,162 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Base Nea Smart",
+        "description": "Saisissez l'adresse IP ou le nom d'hôte de la base Alpha 2. Son interface XML doit être joignable depuis le réseau local.",
+        "data": {
+          "host": "Adresse IP ou nom d'hôte",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de joindre la base",
+      "invalid_response": "La base a renvoyé un document XML invalide",
+      "unknown": "Erreur inattendue"
+    },
+    "abort": {
+      "already_configured": "Cette base est déjà configurée"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options Nea Smart",
+        "menu_options": {
+          "settings": "Intervalle de scrutation",
+          "zones": "Zones de chauffe"
+        }
+      },
+      "settings": {
+        "title": "Intervalle de scrutation",
+        "data": {
+          "scan_interval": "Intervalle (secondes)"
+        }
+      },
+      "zones": {
+        "title": "Zones de chauffe",
+        "data": {
+          "enabled_zones": "Zones exposées"
+        }
+      }
+    }
+  },
+  "services": {
+    "write_zone_value": {
+      "name": "Écrire une valeur de zone",
+      "description": "Écrit un élément XML dans une section HEATAREA de la base.",
+      "fields": {
+        "entry_id": {
+          "name": "Entrée de configuration",
+          "description": "L'entrée Nea Smart à cibler. Nécessaire seulement si plusieurs bases sont configurées."
+        },
+        "zone": {
+          "name": "Numéro de zone",
+          "description": "L'attribut nr de la HEATAREA ciblée (1 à 12)."
+        },
+        "tag": {
+          "name": "Élément",
+          "description": "L'élément XML à écrire, par exemple T_TARGET."
+        },
+        "value": {
+          "name": "Valeur",
+          "description": "La valeur à envoyer, par exemple 20.5."
+        }
+      }
+    },
+    "write_device_value": {
+      "name": "Écrire une valeur de base",
+      "description": "Écrit un élément au niveau de la base, éventuellement imbriqué.",
+      "fields": {
+        "entry_id": {
+          "name": "Entrée de configuration",
+          "description": "L'entrée Nea Smart à cibler. Nécessaire seulement si plusieurs bases sont configurées."
+        },
+        "path": {
+          "name": "Chemin de l'élément",
+          "description": "Le chemin de l'élément, par exemple COOLING ou RELAIS/FUNCTION."
+        },
+        "value": {
+          "name": "Valeur",
+          "description": "La valeur à envoyer, par exemple 1."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "t_actual": {
+        "name": "Température ambiante"
+      },
+      "t_actual_ext": {
+        "name": "Température capteur externe"
+      },
+      "t_target_base": {
+        "name": "Consigne de base"
+      },
+      "program_source": {
+        "name": "Source du programme"
+      },
+      "program_week": {
+        "name": "Programme semaine"
+      },
+      "program_weekend": {
+        "name": "Programme week-end"
+      },
+      "party_remaining_time": {
+        "name": "Temps de fête restant"
+      },
+      "datetime": {
+        "name": "Date et heure"
+      },
+      "errorcount": {
+        "name": "Nombre d'erreurs"
+      }
+    },
+    "number": {
+      "t_target": {
+        "name": "Consigne"
+      },
+      "t_heat_vacation": {
+        "name": "Consigne de vacances"
+      }
+    },
+    "select": {
+      "heatarea_mode": {
+        "name": "Mode de fonctionnement"
+      },
+      "relais_function": {
+        "name": "Fonction du relais"
+      }
+    },
+    "binary_sensor": {
+      "heatarea_state": {
+        "name": "État de la zone"
+      },
+      "party": {
+        "name": "Mode fête"
+      },
+      "presence": {
+        "name": "Présence"
+      },
+      "islocked": {
+        "name": "Verrouillage enfants"
+      },
+      "lock_available": {
+        "name": "Code de verrouillage requis"
+      },
+      "sensor_ext": {
+        "name": "Capteur externe"
+      },
+      "vacation_state": {
+        "name": "Mode vacances"
+      }
+    },
+    "switch": {
+      "cooling": {
+        "name": "Refroidissement"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+write_zone_value:
+  name: Write heat area value
+  description: >-
+    Write a single XML element inside a HEATAREA section of the base. The
+    entity is updated optimistically; the room controller may take up to ten
+    minutes to pick the new value up.
+  fields:
+    entry_id:
+      name: Configuration entry
+      description: The Nea Smart entry to target. Required only if several bases are configured.
+      required: false
+      selector:
+        config_entry:
+          integration: neasmart
+    zone:
+      name: Heat area number
+      description: The nr attribute of the target HEATAREA (1 to 12).
+      required: true
+      selector:
+        number:
+          min: 1
+          max: 12
+          mode: box
+    tag:
+      name: Element
+      description: The XML element to write, for example T_TARGET.
+      required: true
+      selector:
+        text:
+    value:
+      name: Value
+      description: The value to send, for example 20.5.
+      required: true
+      selector:
+        text:
+
+write_device_value:
+  name: Write base value
+  description: >-
+    Write a single element at device level, optionally nested. Use a slash to
+    describe a nested path, for example RELAIS/FUNCTION.
+  fields:
+    entry_id:
+      name: Configuration entry
+      description: The Nea Smart entry to target. Required only if several bases are configured.
+      required: false
+      selector:
+        config_entry:
+          integration: neasmart
+    path:
+      name: Element path
+      description: The element path, for example COOLING or RELAIS/FUNCTION.
+      required: true
+      selector:
+        text:
+    value:
+      name: Value
+      description: The value to send, for example 1.
+      required: true
+      selector:
+        text:
