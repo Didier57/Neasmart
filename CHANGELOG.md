@@ -4,6 +4,17 @@ Toutes les modifications notables de ce projet sont documentées dans ce
 fichier. Le format s'appuie sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/)
 et le projet respecte le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.0.1] - 2026-09-18
+
+### Corrigé
+
+- Capteur **Date et heure** (`DATETIME`) : la valeur est désormais renvoyée avec
+  un fuseau horaire, condition requise par Home Assistant pour un capteur de
+  type horodatage. Le capteur remontait auparavant sans valeur.
+- Interrupteur **Refroidissement** (`COOLING`) : il n'est plus proposé que si la
+  fonction **CO Pilot** est active sur le relais, car la base rejette la commande
+  dans le cas contraire (erreur sur l'interface web).
+
 ## [1.0.0] - 2026-09-18
 
 ### Ajouté
@@ -19,4 +30,5 @@ et le projet respecte le [versionnage sémantique](https://semver.org/lang/fr/).
 - Options : intervalle de scrutation et zones exposées.
 - Traductions française et anglaise.
 
+[1.0.1]: https://github.com/Didier57/Neasmart/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Didier57/Neasmart/releases/tag/v1.0.0

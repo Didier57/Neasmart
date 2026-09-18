@@ -8,6 +8,7 @@ from typing import Any
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.util import dt as dt_util
 
 from .api import parse_float, parse_int
 from .const import (
@@ -61,16 +62,17 @@ def as_int(value: Any) -> int | None:
 
 
 def as_timestamp(value: Any) -> datetime | None:
-    """Return ``value`` parsed as an ISO 8601 timestamp when possible."""
+    """Return ``value`` parsed as a timezone aware timestamp when possible."""
     if value is None:
         return None
     text = str(value).strip()
     if not text:
         return None
     try:
-        return datetime.fromisoformat(text)
+        parsed = datetime.fromisoformat(text)
     except ValueError:
         return None
+    return dt_util.as_local(parsed)
 
 
 class NeaSmartZoneEntity(CoordinatorEntity[NeaSmartCoordinator]):

@@ -11,7 +11,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .api import NeaSmartApiError, NeaSmartClient, NeaSmartConnectionError
+from .api import NeaSmartApiError, NeaSmartClient, NeaSmartConnectionError, parse_int
 from .const import (
     CONF_BASE_ID,
     CONF_ENABLED_ZONES,
@@ -89,6 +89,20 @@ class NeaSmartCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     def is_zone_enabled(self, nr: int) -> bool:
         """Return whether the heat area should expose its entities."""
         return self._enabled_zones is None or nr in self._enabled_zones
+
+    @property
+    def cooling_available(self) -> bool:
+        """Return whether cooling may be switched on.
+
+        The base only accepts the ``COOLING`` command when the ``CO Pilot``
+        function is active on the relay, so anything else means the command
+        would be rejected.
+        """
+        device = (self.data or {}).get("device") or {}
+        relais = device.get("RELAIS")
+        if not isinstance(relais, dict):
+            return False
+        return parse_int(relais.get("FUNCTION")) == 1
 
     async def _async_update_data(self) -> dict[str, Any]:
         """Fetch ``dynamic.xml`` and return the device and zone sections."""

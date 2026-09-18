@@ -26,8 +26,19 @@ async def async_setup_entry(
     async_add_entities(
         NeaSmartDeviceSwitch(coordinator, entry, field)
         for field in DEVICE_FIELDS
-        if field.platform == PLATFORM_SWITCH
+        if field.platform == PLATFORM_SWITCH and _available(coordinator, field)
     )
+
+
+def _available(coordinator: NeaSmartCoordinator, field: DeviceField) -> bool:
+    """Return whether a device level switch can be exposed on this base.
+
+    The base rejects the ``COOLING`` command unless the ``CO Pilot`` relay
+    function is active, so the switch is only offered when it can be used.
+    """
+    if field.tag == "COOLING":
+        return coordinator.cooling_available
+    return True
 
 
 class NeaSmartDeviceSwitch(NeaSmartDeviceEntity, SwitchEntity):
@@ -42,6 +53,11 @@ class NeaSmartDeviceSwitch(NeaSmartDeviceEntity, SwitchEntity):
         """Initialise the switch for one device level field."""
         super().__init__(coordinator, entry, field)
         self._attr_device_class = field.device_class
+
+    @property
+    def available(self) -> bool:
+        """Return whether the setting may be used on this base."""
+        return _available(self.coordinator, self._field) and super().available
 
     @property
     def is_on(self) -> bool | None:
