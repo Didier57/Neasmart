@@ -21,6 +21,7 @@ Aucun compte, aucun cloud : tout se passe sur le réseau local.
 - [Configuration](#configuration)
 - [Entités créées](#entités-créées)
 - [Services](#services)
+- [Documentation](#documentation)
 - [Points importants](#points-importants)
 - [Dépannage](#dépannage)
 - [Avertissement](#avertissement)
@@ -144,6 +145,13 @@ entités partagent ce nom, par exemple `sensor.cuisine_temperature_ambiante`.
 | `entry_id` | non | Entrée cible si plusieurs bases |
 | `path` | oui | Chemin, par exemple `COOLING` ou `RELAIS/FUNCTION` |
 | `value` | oui | Valeur à envoyer, par exemple `1` |
+
+## Documentation
+
+La description officielle de l'interface XML de la base Alpha 2 est disponible
+dans ce dépôt :
+
+- [Alpha 2 – XML Interface Description (PDF)](docs/Alpha2-XML-Interface-description_eng.pdf)
 
 ## Points importants
 
