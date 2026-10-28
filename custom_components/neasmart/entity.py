@@ -6,6 +6,8 @@ from datetime import datetime
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -39,14 +41,21 @@ def base_device_info(
     )
 
 
-def zone_device_info(entry: ConfigEntry, zone: Zone) -> DeviceInfo:
+def zone_device_info(
+    hass: HomeAssistant, entry: ConfigEntry, zone: Zone
+) -> DeviceInfo:
     """Build the device registry entry for a single heat area."""
+    registry = dr.async_get(hass)
+    base = registry.async_get_or_create(
+        config_entry_id=entry.entry_id,
+        identifiers={(DOMAIN, entry.entry_id)},
+    )
     return DeviceInfo(
         identifiers={(DOMAIN, f"{entry.entry_id}_zone_{zone.nr}")},
         name=zone.name,
         manufacturer=MANUFACTURER,
         model=MODEL,
-        via_device=(DOMAIN, entry.entry_id),
+        via_device_id=base.id,
     )
 
 
@@ -99,7 +108,7 @@ class NeaSmartZoneEntity(CoordinatorEntity[NeaSmartCoordinator]):
         self._zone = zone
         self._field = field
         self._attr_unique_id = f"{entry.entry_id}_zone_{zone.nr}_{field.key}"
-        self._attr_device_info = zone_device_info(entry, zone)
+        self._attr_device_info = zone_device_info(coordinator.hass, entry, zone)
         self._attr_translation_key = field.translation_key
         self._attr_entity_registry_enabled_default = field.enabled_default
 
