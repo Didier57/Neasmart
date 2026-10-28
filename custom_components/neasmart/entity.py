@@ -41,9 +41,7 @@ def base_device_info(
     )
 
 
-def zone_device_info(
-    hass: HomeAssistant, entry: ConfigEntry, zone: Zone
-) -> DeviceInfo:
+def zone_device_info(hass: HomeAssistant, entry: ConfigEntry, zone: Zone) -> DeviceInfo:
     """Build the device registry entry for a single heat area."""
     registry = dr.async_get(hass)
     base = registry.async_get_or_create(
